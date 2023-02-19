@@ -40,7 +40,7 @@ class Lexer:
         self.advance()
     def advance(self):
         self.pos += 1
-        self.current_char = self.text[self. pos] if self.pos < len(self.text) else None
+        self.current_char = self.text[self.pos] if self.pos < len(self.text) else None
     def make_tokens(self):
         tokens = []
 
@@ -84,6 +84,7 @@ class Lexer:
                 num_str += '.'
             else:
                 num_str += self.current_char
+            self.advance()
         if dot_count == 0:
             return Token(TT_INT, int(num_str))
         else:
